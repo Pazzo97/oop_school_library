@@ -49,7 +49,7 @@ class App
     type = gets.chomp.to_i
 
     puts 'Invalide input' if type != 1 && type != 2
-    add_student if type == 1 
+    add_student if type == 1
     add_teacher if type == 2
   end
 
@@ -111,7 +111,7 @@ class App
     id = gets.chomp.to_i
     @persons.each do |person|
       if person.id == id
-        puts "Rentals:"
+        puts 'Rentals:'
         person.rentals.each do |rental|
           puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author} "
         end
