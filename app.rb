@@ -49,8 +49,8 @@ class App
     type = gets.chomp.to_i
 
     puts 'Invalide input' if type != 1 && type != 2
-    add_student if type == 1 # Create a student if the user entered 1
-    add_teacher if type == 2 # Create a teacher if the user entered 2
+    add_student if type == 1 
+    add_teacher if type == 2
   end
 
   def list_people(show_index: false)
@@ -71,7 +71,7 @@ class App
     student = Student.new(age, name, parent_permission: parent_permission)
     @persons << student
 
-    puts "Student with id #{student.id} created"
+    puts "Student with id #{student.id} successfully created"
   end
 
   def add_teacher
@@ -84,7 +84,7 @@ class App
     teacher = Teacher.new(specilization, age, name)
     @persons << teacher
 
-    puts "Student with id #{teacher.id} created"
+    puts "Teacher with id #{teacher.id} successfully created"
   end
 
   def list_books(show_index: false)
@@ -111,11 +111,10 @@ class App
     id = gets.chomp.to_i
     @persons.each do |person|
       if person.id == id
+        puts "Rentals:"
         person.rentals.each do |rental|
           puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author} "
         end
-      else
-        puts "No rentals found for person with id #{id}"
       end
     end
   end
