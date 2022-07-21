@@ -105,6 +105,8 @@ class App
     puts 'Book created successfully'
   end
 
+  # rubocop:disable Style/Next
+
   def list_rentals_by_person_id
     puts 'No person entry found' if @persons.empty?
     print 'Enter person ID: '
@@ -118,6 +120,7 @@ class App
       end
     end
   end
+  # rubocop:enable Style/Next
 
   def add_rental
     puts 'Select a book from the following list by number'
