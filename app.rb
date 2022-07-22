@@ -8,6 +8,7 @@ class App
   def initialize
     @persons = []
     @books = []
+    @rentals = []
   end
 
   def run
