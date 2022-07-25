@@ -4,6 +4,8 @@ require_relative './teacher'
 require_relative './book'
 require_relative './rental'
 require_relative './methods/add_person'
+require_relative './methods/add_books'
+require_relative './methods/add_rentals'
 
 class App
   def initialize
@@ -33,7 +35,6 @@ class App
     run # List actions once the user is done with the current action
   end
 
-
   def list_people(show_index: false)
     @persons.each_with_index do |person, index|
       result = "[#{person.class.name}] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
@@ -48,16 +49,6 @@ class App
       result = " #{index}) " + result if show_index
       puts result
     end
-  end
-
-  def add_book
-    print 'Enter the name of the book: '
-    name = gets.chomp.to_s
-    print 'Enter the author of the book: '
-    author = gets.chomp.to_s
-    book = Book.new(name, author)
-    @books << book
-    puts 'Book created successfully'
   end
 
   # rubocop:disable Style/Next
@@ -76,23 +67,4 @@ class App
     end
   end
   # rubocop:enable Style/Next
-
-  def add_rental
-    puts 'Select a book from the following list by number'
-    list_books(show_index: true)
-    book = gets.chomp.to_i
-    puts 'Invalid input!' if !(book.is_a? Integer) && book >= @books.length
-
-    puts 'Select a person from the following list by number (not id)'
-    list_people(show_index: true)
-    person = gets.chomp.to_i
-    puts 'Invalide input!' if !(person.is_a? Integer) && person >= @people.length
-
-    print 'Please enter the date: '
-    date = gets.chomp.to_s
-
-    Rental.new(date, @books[book], @persons[person])
-
-    puts 'Rental created successfully'
-  end
 end
