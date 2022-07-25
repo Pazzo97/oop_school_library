@@ -5,8 +5,6 @@ def add_teacher
   age = gets.chomp.to_i
   print "And teacher's specialization: "
   specilization = gets.chomp.to_s
-  teacher = Teacher.new(specilization, age, name)
-  @persons << teacher
 
-  puts "Teacher with id #{teacher.id} successfully created"
+  validate_teacher_inputs(name, age, specilization)
 end

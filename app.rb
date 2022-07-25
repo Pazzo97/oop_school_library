@@ -66,5 +66,38 @@ class App
       end
     end
   end
+
+  def validate_teacher_inputs(name, age, specilization)
+    name_check = !name.empty? && name.is_a?(String)
+    age_check = age > 18 && age.is_a?(Integer)
+    specilization_check = !specilization.empty? && specilization.is_a?(String)
+    return unless name_check && age_check && specilization_check
+
+    teacher = Teacher.new(specilization, age, name)
+    @persons << teacher
+    puts "Teacher with id #{teacher.id} successfully created"
+  end
+
+  def validate_student_inputs(name, age, parent_permission)
+    name_check = !name.empty? && name.is_a?(String)
+    age_check = age > 18 && age.is_a?(Integer)
+    parent_permission_check = parent_permission.is_a?(String)
+    return unless name_check && age_check && parent_permission_check
+
+    student = Student.new(age, name, parent_permission: parent_permission)
+    @persons << student
+    puts "Student with id #{student.id} successfully created"
+  end
+
+  def validate_rental_inputs(date, book, person)
+    date_check = !date.empty?
+    book_check = book.is_a?(Integer)
+    person_check = person.is_a?(Integer)
+    return unless date_check && book_check && person_check
+
+    rental = Rental.new(date, @books[book], @persons[person])
+    @rentals << rental
+    puts 'Rental created successfully'
+  end
   # rubocop:enable Style/Next
 end

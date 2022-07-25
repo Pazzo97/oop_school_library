@@ -12,7 +12,5 @@ def add_rental
   print 'Please enter the date: '
   date = gets.chomp.to_s
 
-  Rental.new(date, @books[book], @persons[person])
-
-  puts 'Rental created successfully'
+  validate_rental_inputs(date, book, person)
 end
