@@ -29,13 +29,20 @@ Clone the repository run the below commands.
 
 Kindly modify the files as needed.
 
-## Author
+## Authors
 
 👤 **Patrick MUKUNZI**
 
 - GitHub: [@Patrick](https://github.com/Pazzo97)
 - Twitter: [@Patrick](https://twitter.com/mukunzipat)
 - LinkedIn: [@Patrick](https://www.linkedin.com/in/patrick-mukunzi/)
+
+👤 **Eid Hachem**
+
+- GitHub: [@EidHachem](https://github.com/EidHachem)
+- Twitter: [@eidHachem1](https://twitter.com/@eidHachem1)
+- LinkedIn: [Eid Hachem](https://www.linkedin.com/in/eid-hachem/)
+
 
 ## 🤝 Contributing
 
