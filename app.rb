@@ -21,6 +21,14 @@ class App
     action(action)
   end
 
+  def load_data
+    load_people
+    puts
+    load_books
+    puts
+    load_rentals
+  end
+
   private
 
   def action(action)
@@ -103,7 +111,7 @@ class App
     @books << book
     save_book(name, author)
 
-    puts "Book is successfully created"
+    puts 'Book is successfully created'
   end
 
   def validate_rental_inputs(date, book, person)

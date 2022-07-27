@@ -1,70 +1,77 @@
 require 'json'
-require './person'
-require './student'
-require './classroom'
-require './teacher'
-require './rental'
-require './book'
+require_relative '../person'
+require_relative '../student'
+require_relative '../teacher'
+require_relative '../rental'
+require_relative '../book'
+require_relative '../app'
 
-def load_people(mypeople)
+def load_people
   if File.exist?('./data/people.json')
     file = File.open('./data/people.json')
 
     if File.empty?('./data/people.json')
-      mypeople << []
+      puts 'Please add people data if this is your first time visiting our app'
     else
       people = JSON.parse(File.read('./data/people.json'))
       # p people.length()
       people.each do |person|
         # p person
-        mypeople << if person['type'] == 'Student'
-                      Student.new(person['name'], person['age'], person['parent_permission'])
-                    else
-                      Teacher.new(person['name'], person['age'], person['specialization'], person['parent_permission'])
-                    end
+        if person['type'] == 'Student'
+          student = Student.new(person['age'], person['name'])
+          @persons << student
+        else
+          teacher = Teacher.new(person['specialization'], person['age'], person['name'])
+          @persons << teacher
+        end
       end
     end
     file.close
   else
-    mypeople << []
+    puts 'Please insert some data'
   end
+  puts 'Available people: '
+  @persons.each { |p| puts "Name: #{p.name}, Age: #{p.age}" } unless @persons.empty?
 end
 
-def load_books(mybook)
+def load_books
   if File.exist?('./data/books.json')
     file = File.open('./data/books.json')
 
     if file.size.zero?
-      mybook << []
+      'Please add some books first if this is your fist time using our app'
     else
       books = JSON.parse(File.read('./data/books.json'))
 
       books.each do |book|
-        mybook << Book.new(book['name'], book['author'])
+        book = Book.new(book['name'], book['author'])
+        @books << book
       end
     end
     file.close
   else
-    mybook << []
+    puts 'Please add some books first'
   end
+  puts 'Available books:'
+  @books.each { |b| puts "Book title: #{b.title}, Author: #{b.author}" } unless @books.empty?
 end
 
-def load_rentals(myrental)
+def load_rentals
   if File.exist?('./data/rentals.json')
     file = File.open('./data/rentals.json')
 
     if file.size.zero?
-      myrental << []
+      puts 'Please add reseve some books first'
     else
       rentals = JSON.parse(File.read('./data/rentals.json'))
-
+      puts 'Reserved books: '
       rentals.each do |rental|
-        myrental << Rental.new(rental['date'], @persons[rental['book']], @books[rental['person']])
+        puts "Name: #{rental['person']}, Book: #{rental['book']} on: #{rental['date']}"
       end
     end
     file.close
   else
-    myrental << []
+    puts 'No reservations found, please reseve some books first'
   end
 end
 
