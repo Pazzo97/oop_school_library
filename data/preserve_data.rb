@@ -148,8 +148,8 @@ end
 def save_rental(date, book, person)
   obj = {
     date: date,
-    person: person,
-    book: book
+    person: person.name,
+    book: book.title
   }
 
   if File.exist?('./data/rentals.json')

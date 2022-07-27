@@ -114,7 +114,7 @@ class App
 
     rental = Rental.new(date, @books[book], @persons[person])
     @rentals << rental
-    save_rental(date, book, person)
+    save_rental(date, @books[book], @persons[person])
     puts 'Rental created successfully'
   end
   # rubocop:enable Style/Next
