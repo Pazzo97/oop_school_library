@@ -4,7 +4,7 @@ def add_teacher
   print 'Enter the age of the teacher: '
   age = gets.chomp.to_i
   print "And teacher's specialization: "
-  specilization = gets.chomp.to_s
+  specialization = gets.chomp.to_s
 
-  validate_teacher_inputs(name, age, specilization)
+  validate_teacher_inputs(name, age, specialization)
 end
