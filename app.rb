@@ -6,6 +6,7 @@ require_relative './rental'
 require_relative './methods/add_person'
 require_relative './methods/add_books'
 require_relative './methods/add_rentals'
+require './data/preserve_data'
 
 class App
   def initialize
@@ -18,6 +19,14 @@ class App
     actions.each { |key, value| puts "#{key}: #{value}" }
     action = gets.chomp.to_i
     action(action)
+  end
+
+  def load_data
+    load_people
+    puts
+    load_books
+    puts
+    load_rentals
   end
 
   private
@@ -67,14 +76,16 @@ class App
     end
   end
 
-  def validate_teacher_inputs(name, age, specilization)
+  def validate_teacher_inputs(name, age, specialization)
     name_check = !name.empty? && name.is_a?(String)
     age_check = age > 18 && age.is_a?(Integer)
-    specilization_check = !specilization.empty? && specilization.is_a?(String)
-    return unless name_check && age_check && specilization_check
+    specialization_check = !specialization.empty? && specialization.is_a?(String)
+    return unless name_check && age_check && specialization_check
 
-    teacher = Teacher.new(specilization, age, name)
+    teacher = Teacher.new(specialization, age, name)
     @persons << teacher
+    save_teacher(name, age, specialization)
+
     puts "Teacher with id #{teacher.id} successfully created"
   end
 
@@ -86,7 +97,21 @@ class App
 
     student = Student.new(age, name, parent_permission: parent_permission)
     @persons << student
+    save_student(name, age, parent_permission)
+
     puts "Student with id #{student.id} successfully created"
+  end
+
+  def validate_book_inputs(name, author)
+    name_check = !name.empty? && name.is_a?(String)
+    author_check = !author.empty? && author.is_a?(String)
+    return unless name_check && author_check
+
+    book = Book.new(name, author)
+    @books << book
+    save_book(name, author)
+
+    puts 'Book is successfully created'
   end
 
   def validate_rental_inputs(date, book, person)
@@ -97,6 +122,7 @@ class App
 
     rental = Rental.new(date, @books[book], @persons[person])
     @rentals << rental
+    save_rental(date, @books[book], @persons[person])
     puts 'Rental created successfully'
   end
   # rubocop:enable Style/Next
