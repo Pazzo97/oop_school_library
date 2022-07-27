@@ -8,7 +8,7 @@ class Person < Nameable
     @id = rand(1..10_000)
     @name = name
     @age = age
-    @parent_permission = parent_permission
+    @parent_permission ||= false
     @rentals = []
     super()
   end
@@ -18,12 +18,11 @@ class Person < Nameable
   end
 
   def correct_name
-    @name
+    @name.capitalize
   end
 
-  def add_rental(rental)
-    @rentals << rental
-    rental.person = self
+  def add_rental(person)
+    @rentals << person
   end
 
   private
