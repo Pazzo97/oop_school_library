@@ -8,7 +8,7 @@ class Person < Nameable
     @id = rand(1..10_000)
     @name = name
     @age = age
-    @parent_permission ||= false
+    @parent_permission = parent_permission
     @rentals = []
     super()
   end

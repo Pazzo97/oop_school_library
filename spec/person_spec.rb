@@ -2,7 +2,7 @@ require_relative '../person'
 
 describe Person do
   context 'When passing a name' do
-    eid = Person.new(17, 'eid')
+    eid = Person.new(17, 'eid', parent_permission: false)
     patrick = Person.new(25, 'patrick')
     it 'should return first letter capitalized' do
       expect(eid.correct_name).to eq 'Eid'
