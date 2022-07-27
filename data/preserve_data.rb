@@ -6,6 +6,8 @@ require_relative '../rental'
 require_relative '../book'
 require_relative '../app'
 
+# rubocop:disable Metrics/PerceivedComplexity Metrics/CyclomaticComplexity
+
 def load_people
   if File.exist?('./data/people.json')
     file = File.open('./data/people.json')
@@ -176,3 +178,5 @@ def save_rental(date, book, person)
     myfile.close
   end
 end
+
+# rubocop:enable Metrics/PerceivedComplexity Metrics/CyclomaticComplexity

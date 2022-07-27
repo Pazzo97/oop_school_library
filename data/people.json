@@ -17,5 +17,12 @@
     "name": "Sam",
     "age": 22,
     "parent_permission": "y"
+  },
+  {
+    "type": "Teacher",
+    "specialization": "Software",
+    "name": "Eid",
+    "age": 26,
+    "parent_permission": true
   }
 ]
