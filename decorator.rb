@@ -6,7 +6,7 @@ class Decorator < Nameable
     super()
   end
 
-  def correct_name
-    @nameable.correct_name
+  def correct_name(name)
+    name.capitalize
   end
 end
