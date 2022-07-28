@@ -1,6 +1,7 @@
 require_relative '../person'
 
 describe Person do
+  # rubocop:disable Metrics/BlockLength
   context 'When passing a name' do
     eid = Person.new(17, 'eid', parent_permission: false)
     patrick = Person.new(25, 'patrick')
@@ -42,4 +43,5 @@ describe Person do
       expect(eid.rentals.length).to eq 1
     end
   end
+  # rubocop:enable Metrics/BlockLength
 end
