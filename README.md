@@ -22,10 +22,14 @@ To get a local copy up and running follow these simple steps.
 Clone the repository run the below commands.
 
 - `git clone https://github.com/Pazzo97/oop_school_library.git`
-- `oop_school_library`
--
+- cd `oop_school_library`
 
 ### Usage
+
+#### Test the application
+
+- gem install spec
+- then run 'rspec spec' in your terminal
 
 Kindly modify the files as needed.
 
