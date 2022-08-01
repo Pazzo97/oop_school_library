@@ -32,8 +32,14 @@ class App
   private
 
   def action(action)
-    action_list = { 1 => 'list_books', 2 => 'list_people', 3 => 'add_person', 4 => 'add_book', 5 => 'add_rental',
-                    6 => 'list_rentals_by_person_id', 7 => 'exit' }
+    action_list = { 1 => 'list_books', 
+                    2 => 'list_people', 
+                    3 => 'add_person', 
+                    4 => 'add_book', 
+                    5 => 'add_rental',
+                    6 => 'list_rentals_by_person_id', 
+                    7 => 'exit' 
+                  }
 
     if action_list.key?(action)
       send(action_list[action])
